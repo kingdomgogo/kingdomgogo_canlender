@@ -1,7 +1,5 @@
 package kingdom.calendar;
 
-import java.util.Scanner;
-
 public class Calendar1 {
 
 	private static final int months[] = { 31, 28, 31, 30, 31, 30, 31, 30, 31, 30, 31, 30 };
@@ -9,26 +7,22 @@ public class Calendar1 {
 	public int getMonth(int month) {
 		return months[month - 1];
 	}
+	
+	public void calendarChart(int year, int month) {
+		
+		System.out.printf("   <<%4d년,%3d월>>\n", year, month);
+		System.out.println("   일  월  화  수  목  금  토 ");
+		System.out.println("----------------------");
+		int maxdayofmonth = getMonth(month);
 
-	public static void main(String[] args) {
-		Scanner scn = new Scanner(System.in);
-		Calendar1 cal = new Calendar1();
-		int month = 1;
-		while (true) {
+		for (int i = 1; i <= maxdayofmonth; i++) {
+			System.out.printf("%3d", i);
+			if (i % 7 == 0) {
+				System.out.println();
+			}
 
-			System.out.println("원하는 달을 입력하세요.");
-			month = scn.nextInt();
-			if (month == -1) {
-				break;
-			}
-			if (month > 12) {
-				continue;
-			}
-			System.out.printf("%d월은 %d까지 입니다.\n", month, cal.getMonth(month));
 		}
 
-		System.out.println("Have a nice day");
-		scn.close();
 	}
 
 }
